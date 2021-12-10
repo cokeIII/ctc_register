@@ -119,6 +119,7 @@ if (empty($people_id)) {
     } : null);
   window.URL = window.URL || window.webkitURL || window.mozURL || window.msURL;
   this.userMedia = this.userMedia && !!this.mediaDevices && !!window.URL;
+  console.log(mediaDevices)
   navigator.mediaDevices.getUserMedia({
       video: !this.isMicrophoneAccessGranted,
       audio: !this.isCameraAccessGranted,
