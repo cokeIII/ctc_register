@@ -1,16 +1,15 @@
 <!doctype html>
 <html lang="en" class="h-100">
+
+<head>
+  <?php require_once "setHead.php"; ?>
+</head>
 <?php
-session_start();
 $people_id = $_SESSION["people_id"];
 if (empty($people_id)) {
   header("location: logout.php");
 }
 ?>
-
-<head>
-  <?php require_once "setHead.php"; ?>
-</head>
 <style>
   #my_camera {
     width: 320px;

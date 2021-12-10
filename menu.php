@@ -12,7 +12,7 @@
                     <a class="nav-link active" aria-current="page" href="#">Home</a>
                 </li> -->
 
-                <?php session_start();
+                <?php 
                 if (!empty($_SESSION["status"])) {
                     if ($_SESSION["status"] == "level1") { ?>
                         <li class="nav-item">

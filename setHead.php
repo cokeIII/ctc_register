@@ -25,4 +25,4 @@
 </style>
 <!-- Custom styles for this template -->
 <link href="sticky-footer-navbars.css" rel="stylesheet">
-<?php header('Content-Type: text/html; charset=UTF-8'); ?>
+<?php header('Content-Type: text/html; charset=UTF-8'); session_start();?>

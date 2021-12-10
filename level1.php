@@ -1,18 +1,16 @@
 <!doctype html>
 <html lang="en" class="h-100">
-<?php
-session_start();
-$people_id = $_SESSION["people_id"];
-if (empty($people_id)) {
-  header("location: logout.php");
-}
-?>
-
 <head>
   <?php
   require_once "setHead.php";
   ?>
 </head>
+<?php
+$people_id = $_SESSION["people_id"];
+if (empty($people_id)) {
+  header("location: logout.php");
+}
+?>
 <style>
   #my_camera {
     width: 320px;
@@ -108,6 +106,7 @@ if (empty($people_id)) {
 
 <!-- Configure a few settings and attach camera -->
 <script language="JavaScript">
+  // navigator.getUserMedia()
   Webcam.set({
     width: 320,
     height: 240,
