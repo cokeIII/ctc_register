@@ -1,0 +1,32 @@
+/* Custom page CSS
+-------------------------------------------------- */
+
+
+/* Not required for template or sticky footer method. */
+
+main>.container {
+    padding: 60px 15px 0;
+}
+
+.logo {
+    width: 35px;
+    height: 35px;
+    background-image: url("assets/img/logo-login.gif");
+    background-size: cover;
+}
+
+.logo-bg {
+    clear: both;
+    display: block;
+    width: 100%;
+}
+
+.level_titel {
+    font-size: 28px;
+}
+
+.text-content {
+    margin-top: 3%;
+    font-size: 30px;
+    font-weight: bold;
+}
