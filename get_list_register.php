@@ -14,6 +14,7 @@ $datalist["data"][$i]["level"] = "";
 $datalist["data"][$i]["major"] = "";
 $datalist["data"][$i]["minor"] = "";
 $datalist["data"][$i]["regis"] = "";
+$datalist["data"][$i]["pic"] = "";
 $datalist["data"][$i]["del"] = "";
 
 while ($row = mysqli_fetch_array($resShow)) {
@@ -24,6 +25,7 @@ while ($row = mysqli_fetch_array($resShow)) {
     $datalist["data"][$i]["major"] = $row["major"];
     $datalist["data"][$i]["minor"] = $row["minor"];
     $datalist["data"][$i]["regis"] = (empty($row["pass"])?"":"ขั้นตอนที่ ".$row["pass"]);
+    $datalist["data"][$i]["pic"] = "<a href='upload/".$row['pic']."'>รูปภาพ</a>";
     $datalist["data"][$i]["del"] = '<button class="btn btn-danger delItem" idItem="' . $row["student_id"] . '">ลบ</button>';
 
     $i++;

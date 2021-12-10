@@ -34,6 +34,7 @@ if (empty($people_id)) {
                                 <th>สาขาวิชา</th>
                                 <th>ลงทะเบียน</th>
                                 <th></th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -98,6 +99,9 @@ if (empty($people_id)) {
                 },
                 {
                     "data": "regis"
+                },
+                {
+                    "data": "pic"
                 },
                 {
                     "data": "del"
