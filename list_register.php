@@ -1,5 +1,12 @@
 <!doctype html>
 <html lang="en" class="h-100">
+<?php
+session_start();
+$people_id = $_SESSION["people_id"];
+if (empty($people_id)) {
+    header("location: logout.php");
+}
+?>
 
 <head>
     <?php require_once "setHead.php"; ?>

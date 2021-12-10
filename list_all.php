@@ -1,5 +1,12 @@
 <!doctype html>
 <html lang="en" class="h-100">
+<?php
+session_start();
+$people_id = $_SESSION["people_id"];
+if (empty($people_id)) {
+    header("location: logout.php");
+}
+?>
 
 <head>
     <?php require_once "setHead.php"; ?>
@@ -17,7 +24,7 @@
         <div class="container">
             <div class="card mt-5">
                 <div class="card-body">
-                <!-- <button class="btn btn-primary m-3">เพิ่มรายชื่อ</button> -->
+                    <!-- <button class="btn btn-primary m-3">เพิ่มรายชื่อ</button> -->
                     <table id="list_std" class="table">
                         <thead>
                             <tr>
@@ -30,7 +37,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            
+
                         </tbody>
                     </table>
                 </div>

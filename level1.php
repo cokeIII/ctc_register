@@ -1,8 +1,17 @@
 <!doctype html>
 <html lang="en" class="h-100">
+<?php
+session_start();
+$people_id = $_SESSION["people_id"];
+if (empty($people_id)) {
+  header("location: logout.php");
+}
+?>
 
 <head>
-  <?php require_once "setHead.php"; ?>
+  <?php
+  require_once "setHead.php";
+  ?>
 </head>
 <style>
   #my_camera {
@@ -59,8 +68,9 @@
 </html>
 <script language="JavaScript">
   $(document).ready(function() {
+    getUserMedia()
     $("#student_id_input").focus()
-    
+
     $(document).on('keypress', '#student_id_input', function(e) {
       if (e.which == 13) {
         take_snapshot();
