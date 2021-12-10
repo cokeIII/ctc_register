@@ -68,7 +68,6 @@ if (empty($people_id)) {
 </html>
 <script language="JavaScript">
   $(document).ready(function() {
-    getUserMedia()
     $("#student_id_input").focus()
 
     $(document).on('keypress', '#student_id_input', function(e) {
