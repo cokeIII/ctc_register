@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en" class="h-100">
+
 <head>
   <?php
   require_once "setHead.php";
@@ -106,7 +107,19 @@ if (empty($people_id)) {
 
 <!-- Configure a few settings and attach camera -->
 <script language="JavaScript">
-  // navigator.getUserMedia()
+  // Adapted from: https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia
+  this.mediaDevices = (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) ?
+    navigator.mediaDevices : ((navigator.mozGetUserMedia || navigator.webkitGetUserMedia) ? {
+      getUserMedia: function(c) {
+        return new Promise(function(y, n) {
+          (navigator.mozGetUserMedia ||
+            navigator.webkitGetUserMedia).call(navigator, c, y, n);
+        });
+      }
+    } : null);
+  window.URL = window.URL || window.webkitURL || window.mozURL || window.msURL;
+  this.userMedia = this.userMedia && !!this.mediaDevices && !!window.URL;
+  
   Webcam.set({
     width: 320,
     height: 240,
