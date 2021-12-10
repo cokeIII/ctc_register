@@ -7,7 +7,7 @@
 <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/sticky-footer-navbar/">
 <!-- Bootstrap core CSS -->
 <link href="assets/dist/css/bootstrap.min.css" rel="stylesheet">
-<link href="http://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css" rel="stylesheet"></link>
+<link href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css" rel="stylesheet"></link>
 <style>
     .bd-placeholder-img {
         font-size: 1.125rem;
