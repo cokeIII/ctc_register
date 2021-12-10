@@ -77,6 +77,10 @@ if (empty($people_id)) {
               $("#department").html(data.major + "" + data.system + "")
               $("#status").html("<span class='" + data.status_color + "'>" + data.pass + "</span>")
             } else {
+              $("#student_id").html("")
+              $("#fl_name").html("")
+              $("#level").html("")
+              $("#department").html("")
               $("#status").html("<span class='" + data.status_color + "'>" + data.error + "</span>")
             }
           },
