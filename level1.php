@@ -119,7 +119,13 @@ if (empty($people_id)) {
     } : null);
   window.URL = window.URL || window.webkitURL || window.mozURL || window.msURL;
   this.userMedia = this.userMedia && !!this.mediaDevices && !!window.URL;
-  
+  navigator.mediaDevices.getUserMedia({
+      video: !this.isMicrophoneAccessGranted,
+      audio: !this.isCameraAccessGranted,
+    })
+    .then(() => {
+      this.initStream();
+    });
   Webcam.set({
     width: 320,
     height: 240,
