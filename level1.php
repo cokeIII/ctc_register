@@ -107,26 +107,7 @@ if (empty($people_id)) {
 
 <!-- Configure a few settings and attach camera -->
 <script language="JavaScript">
-  // Adapted from: https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia
-  this.mediaDevices = (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) ?
-    navigator.mediaDevices : ((navigator.mozGetUserMedia || navigator.webkitGetUserMedia) ? {
-      getUserMedia: function(c) {
-        return new Promise(function(y, n) {
-          (navigator.mozGetUserMedia ||
-            navigator.webkitGetUserMedia).call(navigator, c, y, n);
-        });
-      }
-    } : null);
-  window.URL = window.URL || window.webkitURL || window.mozURL || window.msURL;
-  this.userMedia = this.userMedia && !!this.mediaDevices && !!window.URL;
-  console.log(mediaDevices)
-  navigator.mediaDevices.getUserMedia({
-      video: !this.isMicrophoneAccessGranted,
-      audio: !this.isCameraAccessGranted,
-    })
-    .then(() => {
-      this.initStream();
-    });
+
   Webcam.set({
     width: 320,
     height: 240,
