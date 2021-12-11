@@ -38,11 +38,11 @@ if (empty($people_id)) {
           </div>
           <hr>
           <div class="text-content">
-            <div>รหัสนักเรียน : <span id="student_id"></span></div>
-            <div>ชื่อ : <span id="fl_name"></span></div>
-            <div>ระดับชั้น : <span id="level"></span></div>
-            <div>แผนกวิชา : <span id="department"></span></div>
-            <div>สถานะ : <span id="status"></span></div>
+            <div>รหัสนักเรียน : <span class="student_id"></span></div>
+            <div>ชื่อ : <span class="fl_name"></span></div>
+            <div>ระดับชั้น : <span class="level"></span></div>
+            <div>แผนกวิชา : <span class="department"></span></div>
+            <div>สถานะ : <span class="status"></span></div>
           </div>
         </div>
       </div>
@@ -60,35 +60,37 @@ if (empty($people_id)) {
 
     $(document).on('keypress', '#student_id_input', function(e) {
       if (e.which == 13) {
-        $.ajax({
-          url: "insertData.php",
-          type: "POST",
-          dataType: "json",
-          data: {
-            "student_id": $("#student_id_input").val(),
-            "pass": 2,
-          },
-          success: function(data) {
-            $("#student_id_input").val("")
-            if (data.error == 0) {
-              $("#student_id").html(data.student_id)
-              $("#fl_name").html(data.fname + " " + data.lname)
-              $("#level").html(data.level)
-              $("#department").html(data.major + "" + data.system + "")
-              $("#status").html("<span class='" + data.status_color + "'>" + data.pass + "</span>")
-            } else {
-              $("#student_id").html("")
-              $("#fl_name").html("")
-              $("#level").html("")
-              $("#department").html("")
-              $("#status").html("<span class='" + data.status_color + "'>" + data.error + "</span>")
+        if (confirm('รหัสนักเรียน : '+$("#student_id_input").val())) {
+          $.ajax({
+            url: "insertData.php",
+            type: "POST",
+            dataType: "json",
+            data: {
+              "student_id": $("#student_id_input").val(),
+              "pass": 2,
+            },
+            success: function(data) {
+              $("#student_id_input").val("")
+              if (data.error == 0) {
+                $(".student_id").html(data.student_id)
+                $(".fl_name").html(data.fname + " " + data.lname)
+                $(".level").html(data.level)
+                $(".department").html(data.major + "" + data.system + "")
+                $(".status").html("<span class='" + data.status_color + "'>" + data.pass + "</span>")
+              } else {
+                $(".student_id").html("")
+                $(".fl_name").html("")
+                $(".level").html("")
+                $(".department").html("")
+                $(".status").html("<span class='" + data.status_color + "'>" + data.error + "</span>")
+              }
+            },
+            error: function(error) {
+              console.log("Error:");
+              console.log(error);
             }
-          },
-          error: function(error) {
-            console.log("Error:");
-            console.log(error);
-          }
-        });
+          });
+        }
       }
     });
 
