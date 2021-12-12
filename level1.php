@@ -78,7 +78,7 @@ if (empty($people_id)) {
 
     $(document).on('keypress', '#student_id_input', function(e) {
       if (e.which == 13) {
-        if (confirm('รหัสนักเรียน : '+$("#student_id_input").val())) {
+        if (confirm('รหัสนักเรียน : ' + $("#student_id_input").val())) {
           $.ajax({
             url: "insertData.php",
             type: "POST",
@@ -90,7 +90,7 @@ if (empty($people_id)) {
             success: function(data) {
               take_snapshot();
               saveSnap();
-              $("#student_id_input").val("")
+
               if (data.error == 0) {
                 $(".student_id").html(data.student_id)
                 $(".fl_name").html(data.fname + " " + data.lname)
@@ -156,7 +156,7 @@ if (empty($people_id)) {
           "pic": text,
         },
         success: function(data) {
-
+          $("#student_id_input").val("")
         },
         error: function(error) {
           console.log("Error:");
