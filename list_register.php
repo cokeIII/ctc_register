@@ -33,6 +33,7 @@ if (empty($people_id)) {
                                 <th>สาขางาน</th>
                                 <th>สาขาวิชา</th>
                                 <th>ลงทะเบียน</th>
+                                <th>วันเวลา</th>
                                 <th></th>
                                 <th></th>
                             </tr>
@@ -96,6 +97,9 @@ if (empty($people_id)) {
                 },
                 {
                     "data": "minor"
+                },
+                {
+                    "data": "dates"
                 },
                 {
                     "data": "regis"
