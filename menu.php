@@ -12,7 +12,7 @@
                     <a class="nav-link active" aria-current="page" href="#">Home</a>
                 </li> -->
 
-                <?php 
+                <?php
                 if (!empty($_SESSION["status"])) {
                     if ($_SESSION["status"] == "level1") { ?>
                         <li class="nav-item">
@@ -52,6 +52,9 @@
                 <?php } else { ?>
                     <li class="nav-item">
                         <a class="nav-link " href="index.php">เข้าสู่ระบบ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="stdCheck.php">ตรวจสอบสถานะนักเรียน</a>
                     </li>
                 <?php } ?>
             </ul>
