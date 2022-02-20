@@ -100,7 +100,7 @@ function getRegis1($group)
     global $conn;
     $sql = "select count(register.student_id) as sum1 from register 
         inner join new_student on register.student_id = new_student.student_id
-        where level = 'ปวช.' and major = '$group'
+        where level = 'ปวช.' and major = '$group' and DATE(time_stamp) >= '2022-02-20'
         ";
     $res = mysqli_query($conn, $sql);
     $row = mysqli_fetch_array($res);
@@ -111,7 +111,7 @@ function getRegis2($group)
     global $conn;
     $sql = "select count(register.student_id) as sum2 from register 
         inner join new_student on register.student_id = new_student.student_id
-        where level = 'ปวส.' and major = '$group'
+        where level = 'ปวส.' and major = '$group' and DATE(time_stamp) >= '2022-02-20'
         ";
     $res = mysqli_query($conn, $sql);
     $row = mysqli_fetch_array($res);
