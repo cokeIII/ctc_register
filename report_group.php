@@ -47,9 +47,9 @@ if (empty($people_id)) {
                             <?php while ($row = mysqli_fetch_array($res)) { ?>
                                 <tr>
                                     <td><?php echo $row["major"]; ?></td>
-                                    <td><?php echo $row["idTotal"]; ?></td>
-                                    <td><?php echo $row["idTotal"]; ?></td>
-                                    <td><?php echo $row["idTotal"]+$row["idTota2"]; ?></td>
+                                    <td><?php echo $row["idTotal1"]; ?></td>
+                                    <td><?php echo $row["idTotal2"]; ?></td>
+                                    <td><?php echo $row["idTotal1"]+$row["idTotal2"]; ?></td>
                                 </tr>
                             <?php } ?>
                         </tbody>
