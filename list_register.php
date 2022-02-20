@@ -32,8 +32,8 @@ if (empty($people_id)) {
                                 <th>ระดับ</th>
                                 <th>สาขางาน</th>
                                 <th>สาขาวิชา</th>
-                                <th>ลงทะเบียน</th>
                                 <th>วันเวลา</th>
+                                <th>ลงทะเบียน</th>
                                 <th></th>
                                 <th></th>
                             </tr>
