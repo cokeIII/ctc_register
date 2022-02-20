@@ -81,6 +81,7 @@ function checkRegis($id){
     $sql="select * from register where student_id = '$id' ";
     $res = mysqli_query($conn,$sql);
     $row = mysqli_num_rows($res);
-    return ($row > 0?'<span class="text-success">ลงทะเบียนแล้ว</span>':'<span class="text-danger">ยังไม่ลงทะเบียน</span>');
+    $data = mysqli_fetch_array($res);
+    return ($row > 0?'<span class="text-success">ลงทะเบียนแล้ว'.$data["pass"].'</span>':'<span class="text-danger">ยังไม่ลงทะเบียน</span>');
 }
 ?>
