@@ -20,7 +20,7 @@ if (empty($people_id)) {
         require_once "menu.php";
         $sql = "select *,count(CASE WHEN n.level = 'ปวช.' THEN 1 END) as idTotal1, count(CASE WHEN n.level = 'ปวส.' THEN 1 END) as idTotal2 from register r 
         inner join new_student n on r.student_id = n.student_id
-        group by n.major'
+        group by n.major
         ";
         $res = mysqli_query($conn, $sql);
 
@@ -32,7 +32,7 @@ if (empty($people_id)) {
         <div class="container">
             <div class="card mt-5">
                 <div class="card-body">
-                    <?php echo $sql; ?>
+                    <?php //echo $sql; ?>
                     <!-- <button class="btn btn-primary m-3">เพิ่มรายชื่อ</button> -->
                     <table id="list_std" class="table">
                         <thead>
