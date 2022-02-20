@@ -32,7 +32,8 @@ if (empty($people_id)) {
         <div class="container">
             <div class="card mt-5">
                 <div class="card-body">
-                    <?php //echo $sql; ?>
+                    <?php //echo $sql; 
+                    ?>
                     <!-- <button class="btn btn-primary m-3">เพิ่มรายชื่อ</button> -->
                     <table id="list_std" class="table">
                         <thead>
@@ -41,16 +42,15 @@ if (empty($people_id)) {
                                 <th>จำนวนที่ลงทะเบียน</th>
                                 <th>ปวช.</th>
                                 <th>ปวส.</th>
-                                <th>รวม</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php while ($row = mysqli_fetch_array($res)) { ?>
                                 <tr>
                                     <td><?php echo $row["major"]; ?></td>
+                                    <td><?php echo $row["idTotal1"] + $row["idTotal2"]; ?></td>
                                     <td><?php echo $row["idTotal1"]; ?></td>
                                     <td><?php echo $row["idTotal2"]; ?></td>
-                                    <td><?php echo $row["idTotal1"] + $row["idTotal2"]; ?></td>
                                 </tr>
                             <?php } ?>
                         </tbody>
