@@ -98,7 +98,7 @@ if (empty($people_id)) {
 function getRegis1($group)
 {
     global $conn;
-    echo $sql = "select count(register.student_id) as sum1 from register 
+    $sql = "select count(register.student_id) as sum1 from register 
         inner join new_student on register.student_id = new_student.student_id
         where level = 'ปวช.' and major = '$group'
         ";
