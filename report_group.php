@@ -59,7 +59,7 @@ if (empty($people_id)) {
                                 $sumR2 = getRegis2($row["major"]);
                                 $sum = $sum + $sumR1 + $sumR2;
                                 $sum1 = $sum1 + $sumR1;
-                                $sum2 = $sum2 + $sumR2;
+                                $sum2 = $sum2 + $sumR2 ;
                             ?>
                                 <tr>
                                     <td><?php echo $row["major"]; ?></td>
