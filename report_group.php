@@ -45,7 +45,11 @@ if (empty($people_id)) {
                             </tr>
                         </thead>
                         <tbody>
-                            <?php while ($row = mysqli_fetch_array($res)) { ?>
+                            <?php while ($row = mysqli_fetch_array($res)) {
+                                $sum = $sum + $row["idTotal1"] + $row["idTotal2"];
+                                $sum1 = $sum1 + $row["idTotal1"];
+                                $sum2 = $sum2 + $row["idTotal2"];
+                            ?>
                                 <tr>
                                     <td><?php echo $row["major"]; ?></td>
                                     <td><?php echo $row["idTotal1"] + $row["idTotal2"]; ?></td>
@@ -54,6 +58,12 @@ if (empty($people_id)) {
                                 </tr>
                             <?php } ?>
                         </tbody>
+                        <tfoot>
+                            <th>รวม</th>
+                            <th><?php echo $sum; ?></th>
+                            <th><?php echo $sum1; ?></th>
+                            <th><?php echo $sum2; ?></th>
+                        </tfoot>
                     </table>
                 </div>
             </div>
