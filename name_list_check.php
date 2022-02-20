@@ -82,6 +82,6 @@ function checkRegis($id){
     $res = mysqli_query($conn,$sql);
     $row = mysqli_num_rows($res);
     $data = mysqli_fetch_array($res);
-    return ($row > 0?'<span class="text-success">ลงทะเบียนแล้ว'.$data["pass"].'</span>':'<span class="text-danger">ยังไม่ลงทะเบียน</span>');
+    return ($row > 0?'<span class="text-success">ลงทะเบียนแล้ว ขั้นที่ '.$data["pass"].'</span>':'<span class="text-danger">ยังไม่ลงทะเบียน</span>');
 }
 ?>
