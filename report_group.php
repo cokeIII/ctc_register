@@ -20,7 +20,7 @@ if (empty($people_id)) {
         require_once "menu.php";
         $sql = "select *,count(CASE WHEN n.level = 'ปวช.' THEN 1 END) as idTotal1, count(CASE WHEN n.level = 'ปวส.' THEN 1 END) as idTotal2 from register r 
         inner join new_student n on r.student_id = n.student_id
-        group by n.major
+        where DATE(r.time_stamp) >= '2022-02-20' group by n.major
         ";
         $res = mysqli_query($conn, $sql);
 
@@ -42,6 +42,7 @@ if (empty($people_id)) {
                                 <th>จำนวนที่ลงทะเบียน</th>
                                 <th>ปวช.</th>
                                 <th>ปวส.</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -55,6 +56,7 @@ if (empty($people_id)) {
                                     <td><?php echo $row["idTotal1"] + $row["idTotal2"]; ?></td>
                                     <td><?php echo $row["idTotal1"]; ?></td>
                                     <td><?php echo $row["idTotal2"]; ?></td>
+                                    <td><a href="name_list_check.php">ดูรายชื่อ</a></td>
                                 </tr>
                             <?php } ?>
                         </tbody>
