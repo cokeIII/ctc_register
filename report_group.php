@@ -18,7 +18,7 @@ if (empty($people_id)) {
         <!-- Fixed navbar -->
         <?php
         require_once "menu.php";
-        $sql = "select *,count(CASE WHEN n.level = 'ปวช.' THEN 1 END) as idTotal1, count(CASE WHEN n.level = 'ปวส.' THEN 1 END) as idTotal2 from register r 
+        echo $sql = "select *,count(CASE WHEN n.level = 'ปวช.' THEN 1 END) as idTotal1, count(CASE WHEN n.level = 'ปวส.' THEN 1 END) as idTotal2 from register r 
         inner join new_student n on r.student_id = n.student_id
         group by n.major'
         ";
