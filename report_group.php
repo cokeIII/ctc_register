@@ -18,9 +18,14 @@ if (empty($people_id)) {
         <!-- Fixed navbar -->
         <?php
         require_once "menu.php";
-        $sql = "select *,count(CASE WHEN n.level = 'ปวช.' THEN 1 END) as idTotal1, count(CASE WHEN n.level = 'ปวส.' THEN 1 END) as idTotal2 from register r 
-        inner join new_student n on r.student_id = n.student_id
-        where DATE(r.time_stamp) >= '2022-02-20' group by n.major
+        $sql = "select *,
+        count(student_id) as totalS , 
+        () as sumR1, 
+        (select count(CASE WHEN level = 'ปวส.' THEN 1 END) from register inner join new_student on register.student_id = new_student.student_id ) as sumR2, 
+        count(CASE WHEN level = 'ปวช.' THEN 1 END) as idTotal1, 
+        count(CASE WHEN level = 'ปวส.' THEN 1 END) as idTotal2 
+        from new_student 
+        group by major
         ";
         $res = mysqli_query($conn, $sql);
 
@@ -39,29 +44,40 @@ if (empty($people_id)) {
                         <thead>
                             <tr>
                                 <th>แผนกช่าง</th>
+                                <th>จำนวนทั้งหมด</th>
+                                <th>ปวช.(ทั้งหมด)</th>
+                                <th>ปวส.(ทั้งหมด)</th>
                                 <th>จำนวนที่ลงทะเบียน</th>
-                                <th>ปวช.</th>
-                                <th>ปวส.</th>
+                                <th>ปวช.(ที่ลงทะเบียน)</th>
+                                <th>ปวส.(ที่ลงทะเบียน)</th>
                                 <th></th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php while ($row = mysqli_fetch_array($res)) {
-                                $sum = $sum + $row["idTotal1"] + $row["idTotal2"];
-                                $sum1 = $sum1 + $row["idTotal1"];
-                                $sum2 = $sum2 + $row["idTotal2"];
+                                $sumR1 = getRegis1($row["major"]);
+                                $sumR2 = getRegis2($row["major"]);
+                                $sum = $sum + $sumR1 + $sumR2;
+                                $sum1 = $sum1 + $sumR1;
+                                $sum2 = $sum2 + $sumR2;
                             ?>
                                 <tr>
                                     <td><?php echo $row["major"]; ?></td>
-                                    <td><?php echo $row["idTotal1"] + $row["idTotal2"]; ?></td>
+                                    <td><?php echo $row["totalS"]; ?></td>
                                     <td><?php echo $row["idTotal1"]; ?></td>
                                     <td><?php echo $row["idTotal2"]; ?></td>
+                                    <td><?php echo $sumR1 + $sumR2; ?></td>
+                                    <td><?php echo $sumR1; ?></td>
+                                    <td><?php echo $sumR2; ?></td>
                                     <td><a href="name_list_check.php">ดูรายชื่อ</a></td>
                                 </tr>
                             <?php } ?>
                         </tbody>
                         <tfoot>
                             <th>รวม</th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
                             <th><?php echo $sum; ?></th>
                             <th><?php echo $sum1; ?></th>
                             <th><?php echo $sum2; ?></th>
@@ -80,3 +96,27 @@ if (empty($people_id)) {
 <script>
     $(document).ready(function() {})
 </script>
+<?php
+function getRegis1($group)
+{
+    global $conn;
+    $sql = "select count(student_id) as sum1 from register 
+        inner join new_student on register.student_id = new_student.student_id
+        where level = 'ปวช.' and major = '$group'
+        ";
+    $res = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_array($res);
+    return $row["sum1"];
+}
+function getRegis2($group)
+{
+    global $conn;
+    $sql = "select count(student_id) as sum2 from register 
+        inner join new_student on register.student_id = new_student.student_id
+        where level = 'ปวส.' and major = '$group'
+        ";
+    $res = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_array($res);
+    return $row["sum2"];
+}
+?>
