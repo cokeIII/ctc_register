@@ -20,8 +20,6 @@ if (empty($people_id)) {
         require_once "menu.php";
         $sql = "select *,
         count(student_id) as totalS , 
-        () as sumR1, 
-        (select count(CASE WHEN level = 'ปวส.' THEN 1 END) from register inner join new_student on register.student_id = new_student.student_id ) as sumR2, 
         count(CASE WHEN level = 'ปวช.' THEN 1 END) as idTotal1, 
         count(CASE WHEN level = 'ปวส.' THEN 1 END) as idTotal2 
         from new_student 
