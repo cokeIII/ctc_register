@@ -76,9 +76,30 @@ if (empty($people_id)) {
     // Trigger to open the dialog
     $("#student_id_input").focus()
 
+    function getName() {
+      let res = ""
+      $.ajax({
+        url: "getName.php",
+        type: "POST",
+        async: false,
+        data: {
+          "student_id": $("#student_id_input").val(),
+        },
+        success: function(data) {
+          console.log(data)
+          res = data;
+        },
+        error: function(error) {
+          console.log("Error:");
+          console.log(error);
+        }
+      });
+      return res
+    }
     $(document).on('keypress', '#student_id_input', function(e) {
+      let nameS = getName()
       if (e.which == 13) {
-        if (confirm('รหัสนักเรียน : ' + $("#student_id_input").val())) {
+        if (confirm('ยืนยัน ' + nameS)) {
           $.ajax({
             url: "insertData.php",
             type: "POST",
