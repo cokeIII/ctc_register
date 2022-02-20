@@ -57,7 +57,11 @@ if (empty($people_id)) {
                                 $sumR2 = getRegis2($row["major"]);
                                 $sum = $sum + $sumR1 + $sumR2;
                                 $sum1 = $sum1 + $sumR1;
-                                $sum2 = $sum2 + $sumR2 ;
+                                $sum2 = $sum2 + $sumR2;
+
+                                $sum3 = $sum3 + $row["totalS"];
+                                $sum4 = $sum4 + $row["idTotal1"];
+                                $sum5 = $sum5 + $row["idTotal2"];
                             ?>
                                 <tr>
                                     <td><?php echo $row["major"]; ?></td>
@@ -73,9 +77,9 @@ if (empty($people_id)) {
                         </tbody>
                         <tfoot>
                             <th>รวม</th>
-                            <th></th>
-                            <th></th>
-                            <th></th>
+                            <th><?php echo $sum3; ?></th>
+                            <th><?php echo $sum4; ?></th>
+                            <th><?php echo $sum5; ?></th>
                             <th><?php echo $sum; ?></th>
                             <th><?php echo $sum1; ?></th>
                             <th><?php echo $sum2; ?></th>
