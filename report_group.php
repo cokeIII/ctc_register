@@ -3,7 +3,7 @@
 
 <head>
     <?php require_once "setHead.php"; 
-    require_once "connect.php";?>
+    require_once "connect.php" ;?>
 </head>
 <?php
 $people_id = $_SESSION["people_id"];
