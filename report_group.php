@@ -67,7 +67,7 @@ if (empty($people_id)) {
                                     <td><?php echo $sumR1 + $sumR2; ?></td>
                                     <td><?php echo $sumR1; ?></td>
                                     <td><?php echo $sumR2; ?></td>
-                                    <td><a href="name_list_check.php">ดูรายชื่อ</a></td>
+                                    <td><a target="_blank" href="name_list_check.php?g=<?php echo $row["major"]; ?>&l=<?php echo $row["level"]; ?>">ดูรายชื่อ</a></td>
                                 </tr>
                             <?php } ?>
                         </tbody>
