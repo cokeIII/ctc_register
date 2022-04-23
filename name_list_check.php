@@ -20,7 +20,7 @@ if (empty($people_id)) {
         require_once "connect.php";
         $g = $_GET["g"];
         $l = $_GET["l"];
-        $sql = "select * from new_student where major = '$g'";
+        $sql = "select * from new_student where major = '$g' and status_std = '1'";
         $res = mysqli_query($conn, $sql);
 
         ?>
