@@ -2,7 +2,7 @@
 header('Content-Type: text/html; charset=UTF-8');
 require_once "connect.php";
 $datalist = array();
-$sqlShow = "select * from new_student";
+$sqlShow = "select * from new_student where status_std = '1'";
 $resShow = mysqli_query($conn, $sqlShow);
 
 $i = 0;

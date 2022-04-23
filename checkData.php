@@ -3,7 +3,7 @@ require_once "connect.php";
 session_start();
 $student_id = $_POST["student_id"];
 
-$sqlS = "select * from new_student where student_id = '$student_id '";
+$sqlS = "select * from new_student where student_id = '$student_id' and status_std = '1'";
 $resS = mysqli_query($conn, $sqlS);
 $numRowS = mysqli_num_rows($resS);
 if ($numRowS > 0) {

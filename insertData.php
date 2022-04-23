@@ -6,13 +6,13 @@ $people_id = $_SESSION["people_id"];
 if (!empty($_POST["pass"]) && !empty($_POST["student_id"])) {
     $pass = $_POST["pass"];
     $student_id = $_POST["student_id"];
-    $sqlS = "select * from new_student where student_id = '$student_id '";
+    $sqlS = "select * from new_student where student_id = '$student_id' and status_std = '1'";
     $resS = mysqli_query($conn, $sqlS);
     $numRowS = mysqli_num_rows($resS);
     if ($numRowS > 0) {
         $sqlC = "select * from register r
         left join new_student s on s.student_id = r.student_id
-        where r.student_id = '$student_id'";
+        where r.student_id = '$student_id' and s.status_std = '1'";
 
         $resC = mysqli_query($conn, $sqlC);
         $row = mysqli_fetch_array($resC);
@@ -62,7 +62,7 @@ if (!empty($_POST["pass"]) && !empty($_POST["student_id"])) {
                 insert_data1($pass, $student_id);
             } else {
                 $sqlC = "select * from  new_student
-        where student_id = '$student_id'";
+        where student_id = '$student_id' and status_std = '1'";
                 $resC = mysqli_query($conn, $sqlC);
                 $row = mysqli_fetch_array($resC);
                 $data = [];
@@ -104,7 +104,7 @@ function insert_data1($pass, $student_id)
     if ($res && $resLog) {
         $sqlShow = "select * from register r
         left join new_student s on s.student_id = r.student_id
-        where r.student_id = '$student_id'";
+        where r.student_id = '$student_id' and s.status_std = '1'";
         $resShow = mysqli_query($conn, $sqlShow);
         $rowShow = mysqli_fetch_array($resShow);
         $data["student_id"] = $rowShow["student_id"];
@@ -134,7 +134,7 @@ function insert_data($pass, $student_id)
     if ($res && $resLog) {
         $sqlShow = "select * from register r
         left join new_student s on s.student_id = r.student_id
-        where r.student_id = '$student_id'";
+        where r.student_id = '$student_id' and s.status_std = '1'";
         $resShow = mysqli_query($conn, $sqlShow);
         $rowShow = mysqli_fetch_array($resShow);
         $data["student_id"] = $rowShow["student_id"];

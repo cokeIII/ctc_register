@@ -23,6 +23,7 @@ if (empty($people_id)) {
         count(CASE WHEN level = 'ปวช.' THEN 1 END) as idTotal1, 
         count(CASE WHEN level = 'ปวส.' THEN 1 END) as idTotal2 
         from new_student 
+        where status_std = '1'
         group by major
         ";
         $res = mysqli_query($conn, $sql);
@@ -104,7 +105,8 @@ function getRegis1($group)
     global $conn;
     $sql = "select count(register.student_id) as sum1 from register 
         inner join new_student on register.student_id = new_student.student_id
-        where level = 'ปวช.' and major = '$group' and DATE(time_stamp) >= '2022-02-20'
+        where level = 'ปวช.' and major = '$group' and DATE(time_stamp) >= '2022-04-24'
+        and new_student.status_std = '1'
         ";
     $res = mysqli_query($conn, $sql);
     $row = mysqli_fetch_array($res);
@@ -115,7 +117,8 @@ function getRegis2($group)
     global $conn;
     $sql = "select count(register.student_id) as sum2 from register 
         inner join new_student on register.student_id = new_student.student_id
-        where level = 'ปวส.' and major = '$group' and DATE(time_stamp) >= '2022-02-20'
+        where level = 'ปวส.' and major = '$group' and DATE(time_stamp) >= '2022-04-24'
+        and new_student.status_std = '1'
         ";
     $res = mysqli_query($conn, $sql);
     $row = mysqli_fetch_array($res);

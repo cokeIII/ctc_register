@@ -6,7 +6,7 @@ session_start();
 $student_id = $_POST["student_id"];
 
 $sqlShow = "select * from new_student 
-        where student_id = '$student_id'";
+        where student_id = '$student_id' and status_std = '1'";
 $resShow = mysqli_query($conn, $sqlShow);
 $rowShow = mysqli_fetch_array($resShow);
 $numRow = mysqli_num_rows($resShow);
