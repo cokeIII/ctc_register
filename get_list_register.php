@@ -7,7 +7,7 @@ $sqlShow = "select * from register r
 $resShow = mysqli_query($conn, $sqlShow);
 
 $i = 0;
-$datalist["data"][$i]["no"] = "ไม่มีข้อมูล";
+$datalist["data"][$i]["no"] = "$sql";
 $datalist["data"][$i]["student_id"] = "";
 $datalist["data"][$i]["flname"] = "";
 $datalist["data"][$i]["level"] = "";
